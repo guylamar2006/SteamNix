@@ -1,6 +1,10 @@
 # SteamOS-NixOS-Edition
 Nix Flake for creating a SteamOS like experience on NixOS. Clean quiet boot like on SteamDeck. Two second shutdown time.
 
+# Requirments
+* PC with NixOS installed
+* Ethernet Connection
+
 # How to Build NixOS Base System from Flake
 ```
 git clone https://github.com/leonewton253/SteamOS-NixOS-Edition.git
