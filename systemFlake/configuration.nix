@@ -57,8 +57,10 @@
     #jack.enable = true;
   };
     
-  # Enable networking
-  networking.networkmanager.enable = false;
+  # Enable networking and WiFi
+  networking.networkmanager.enable = true;
+  networking.wireless.enable = true;
+
   #Silent Boot
   services.getty.helpLine = lib.mkForce "" ;
   services.getty.greetingLine = "";
@@ -112,6 +114,7 @@
      tmux
      mangohud
      appimage-run
+     legendary-gl
      
   ];
 
