@@ -34,6 +34,33 @@ scp  steamos@192.168.152.163:shortcuts.vdf .local/share/Steam/userdata/115922529
 ```
 Restart Steam/PC
 
+# Installing Epic Games
+SSH into PC and run:
+```
+legendary install gameid
+```
+
+# Running Epic Games
+* Create script such as godlike.sh
+```
+#!/usr/bin/env bash
+
+GAME_ID=...
+
+PROTON=$(find $HOME/.steam/steam/steamapps/common/ -maxdepth 1 -name Proton* | sort | sed -e '$!d')
+
+export STEAM_GAME_PATH=<Your game install folder>
+export STEAM_COMPAT_DATA_PATH="$STEAM_GAME_PATH" # Or point to where your pfx folder is
+export STEAM_COMPAT_CLIENT_INSTALL_PATH="$STEAM_GAME_PATH"
+legendary launch $GAME_ID --no-wine --wrapper "'$PROTON/proton' run"
+```
+* Fill in STEAM_GAME_PATH with path to game, default ~/Games/GameFolder
+* Fill in GAME_ID with gameid
+* Create a shortcut and add the full script path to the target field in parentheses: "/home/steamos/godlike.sh"
+
+
+
+
 
 
 
