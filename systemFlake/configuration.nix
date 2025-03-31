@@ -23,7 +23,8 @@
   boot.initrd.systemd.enable = true;
   boot.consoleLogLevel = 0;
   boot.initrd.verbose = false;
-  boot.kernel.sysctl."kernel.split_lock_mitigate"= "0";
+  #Enable for Intel PCs
+  #boot.kernel.sysctl."kernel.split_lock_mitigate"= "0";
   boot.kernel.sysctl."kernel.sched_bore" = "1";
   #Kernel Modules
   boot.initrd.kernelModules = ["ntsync"];
@@ -110,6 +111,7 @@
      curl
      tmux
      mangohud
+     appimage-run
      
   ];
 
