@@ -3,7 +3,16 @@ Nix Flake for creating a SteamOS like experience on NixOS. Clean quiet boot like
 
 # Requirements
 * PC with NixOS installed
-* Ethernet Connection
+* Ethernet Connection (wifi may work in steam, not tested)
+
+# Features
+* Zero Desktop Bloat. Gamescope is used as window manager.
+* Steamos user does not need to enter sudo password.
+* Clean, textless boot. Similar to SteamDeck bootup. Minus the Splash logo.
+* Read-only system files and binaries to prevent corruption or malware.
+* Boot menu with previous system states, incase update breaks system, allowing you to boot to a previous good state.
+* Full Control over system via Nix configuration file
+
 
 # How to Build NixOS Base System from Flake
 ```
