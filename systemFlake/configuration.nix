@@ -115,6 +115,8 @@
      mangohud
      appimage-run
      legendary-gl
+     #emulationstation-de
+     #retroarch-full
      
   ];
 
