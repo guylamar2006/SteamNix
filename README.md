@@ -1,4 +1,4 @@
-# SteamOS-NixOS-Edition
+# ❄️ SteamOS NixOS Edition ❄️
 Nix Flake for creating a SteamOS like experience on NixOS. Clean quiet boot like on SteamDeck. Two second shutdown time.
 
 # Requirements
