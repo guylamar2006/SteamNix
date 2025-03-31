@@ -49,7 +49,7 @@ SSH into PC and run:
 legendary install gameid
 ```
 
-# Running Epic Games
+# Running Epic Games with Steam's Proton
 * Create script such as godlike.sh
 ```
 #!/usr/bin/env bash
