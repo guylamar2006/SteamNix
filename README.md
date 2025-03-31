@@ -56,7 +56,7 @@ legendary install gameid
 
 GAME_ID=...
 
-PROTON=$(find $HOME/.steam/steam/steamapps/common/ -maxdepth 1 -name Proton* | sort | sed -e '$!d')
+PROTON=$(find $HOME/.steam/steam/steamapps/common/ -maxdepth 1 -name *Experimental | sort | sed -e '$!d')
 
 export STEAM_GAME_PATH=<Your game install folder>
 export STEAM_COMPAT_DATA_PATH="$STEAM_GAME_PATH" # Or point to where your pfx folder is
