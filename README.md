@@ -37,9 +37,9 @@ Find Folder to copy VDF file to:
 ```
 find .local/share/Steam/ -name localconfig*
 ```
-Copy VDF file to directory:
+Copy VDF file to Remote directory :
 ```
-scp  steamos@192.168.152.163:shortcuts.vdf .local/share/Steam/userdata/115922529/config/
+scp shortcuts.vdf steamos@192.168.152.163:.local/share/Steam/userdata/115922529/config/
 ```
 Restart Steam/PC
 
