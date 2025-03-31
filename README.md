@@ -10,7 +10,7 @@ sudo nixos-rebuild switch --flake systemFlake/
 
 All Further changes to configuration.nix for the system need to be done through this command and configuration file!
 
-# How to use Non-Steam Game Shortcut Generator
+# How to use VDF Editor (Add Non-Steam Games)
 ```
 cd Steam Non-Game Shortcut Generator
 python shortcuts.py shortcuts.vdf "Super Video Game IV" "~/mount/ES-DE/EmulationStation.AppImage" ~/mount/ES-DE/ "" "" "" 0 0 1 0 0 FPS Puzzle
