@@ -67,6 +67,11 @@ legendary launch $GAME_ID --no-wine --wrapper "'$PROTON/proton' run"
 * Fill in GAME_ID with gameid
 * Create a shortcut and add the full script path to the target field in parentheses: "/home/steamos/godlike.sh"
 
+# Symlinking RetroArch Cores so EmulationStation can find them
+```
+ln -s /run/current-system/sw/lib/retroarch/cores/ .config/retroarch/
+```
+
 
 
 
