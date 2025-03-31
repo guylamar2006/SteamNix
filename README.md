@@ -16,7 +16,7 @@ All Further changes to configuration.nix for the system need to be done through 
 
 # How to use VDF Editor (Add Non-Steam Games)
 ```
-cd Steam Non-Game Shortcut Generator
+cd VDF-Editor
 python shortcuts.py shortcuts.vdf "Super Video Game IV" "~/mount/ES-DE/EmulationStation.AppImage" ~/mount/ES-DE/ "" "" "" 0 0 1 0 0 FPS Puzzle
 ```
 ```
