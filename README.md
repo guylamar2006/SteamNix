@@ -71,6 +71,7 @@ legendary launch $GAME_ID --no-wine --wrapper "'$PROTON/proton' run"
 ```
 ln -s /run/current-system/sw/lib/retroarch/cores/ .config/retroarch/
 ```
+NixOS uses hashes as paths and are subject to change. /run/current-system contains static paths to hashed folders. 
 
 
 
