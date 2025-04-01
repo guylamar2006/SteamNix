@@ -122,6 +122,7 @@
      legendary-gl
      #emulationstation-de
      #retroarch-full
+     #libretro-shaders-slang
      
   ];
 
