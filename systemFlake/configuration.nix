@@ -123,6 +123,7 @@
      #emulationstation-de
      #retroarch-full
      #libretro-shaders-slang
+     #quickemu
      
   ];
 
