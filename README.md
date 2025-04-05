@@ -18,7 +18,9 @@ Nix Flake for creating a SteamOS like experience on NixOS. Clean quiet boot like
 ```
 git clone https://github.com/leonewton253/SteamOS-NixOS-Edition.git
 cp /etc/nixos/hardware-configuration.nix systemFlake/
-sudo nixos-rebuild switch --flake systemFlake/
+nix-channel --add https://nixos.org/channels/nixos-unstable nixos
+sudo nixos-rebuild boot --upgrade --flake systemFlake/
+sudo reboot now
 ```
 
 All Further changes to configuration.nix for the system need to be done through this command and configuration file!
