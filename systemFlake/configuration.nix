@@ -15,7 +15,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   #Mitigation Performance
   boot.kernelParams = [
-      "mitigations=off" 
       "quiet"
       "splash"
         ];
@@ -23,13 +22,14 @@
   boot.initrd.systemd.enable = true;
   boot.consoleLogLevel = 0;
   boot.initrd.verbose = false;
-  #Enable for Intel PCs
+  #Enable Nested VM
+  #boot.extraModprobeConfig = "options kvm_amd nested=1";
   #boot.kernel.sysctl."kernel.split_lock_mitigate"= "0";
   boot.kernel.sysctl."kernel.sched_bore" = "1";
   #Kernel Modules
   boot.initrd.kernelModules = ["ntsync"];
   #Nix Flakes
-  #Enable Appimage
+  #Enable Appimages to Execute with Appimage-run, needs Appimage-run package
   programs.appimage = {
     enable = true;
     binfmt = true;
@@ -39,12 +39,11 @@
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
   programs.gamescope.capSysNice = true;
-  #hardware.xone.enable = true; # support for the xbox controller USB dongle
-  programs.bash.loginShellInit = "steam-gamescope > /dev/null 2>&1";
+  programs.bash.loginShellInit = "gamescope -W 1920 -H 1080 --steam -- steam -tenfoot -pipewire-dmabuf --adaptive-sync > /dev/null 2>&1";
   #CatchyOS Kernel
   boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
   #Chaotic Nix Pkgs
-  chaotic.mesa-git.enable = true;  
+  chaotic.mesa-git.enable = true;
   #Sound
   # rtkit is optional but recommended
   security.rtkit.enable = true;
@@ -56,11 +55,8 @@
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
   };
-    
-  # Enable networking and WiFi
+  # Enable networking
   networking.networkmanager.enable = true;
-  networking.wireless.enable = true;
-
   #Silent Boot
   services.getty.helpLine = lib.mkForce "" ;
   services.getty.greetingLine = "";
@@ -72,23 +68,6 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
   #Enable Filesystem Compression
   fileSystems = {
   "/".options = [ "compress=zstd" ];
@@ -119,14 +98,12 @@
      tmux
      mangohud
      appimage-run
+     retroarch-full
+     libretro-shaders-slang
      legendary-gl
-     #emulationstation-de
-     #retroarch-full
-     #libretro-shaders-slang
-     #quickemu
+     quickemu
      
   ];
-
 
   # List services that you want to enable:
 
