@@ -41,7 +41,7 @@
   programs.gamescope.capSysNice = true;
   programs.bash.loginShellInit = "gamescope -W 1920 -H 1080 --steam -- steam -tenfoot -pipewire-dmabuf --adaptive-sync > /dev/null 2>&1";
   #CatchyOS Kernel
-  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
   #Chaotic Nix Pkgs
   chaotic.mesa-git.enable = true;
   #Sound
