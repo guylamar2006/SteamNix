@@ -5,7 +5,7 @@ Nix Flake for creating a SteamOS like experience on NixOS. Clean quiet boot like
 * PC with NixOS installed and BTRFS filesystem.
 * Ethernet Connection
 * Desktop (SteamDeck will not work)
-* Basic knowledge of NixOs (editing time zone, fileystem options, etc from config file)
+* Basic knowledge of NixOS (editing time zone, fileystem options, etc from config file)
 
 # Features
 * Zero Desktop Bloat. Gamescope is used as window manager.
