@@ -2,8 +2,9 @@
 Nix Flake for creating a SteamOS like experience on NixOS. Clean quiet boot like on SteamDeck. Two second shutdown time.
 
 # Requirements
-* PC with NixOS installed
-* Ethernet Connection (wifi may work in steam, not tested)
+* PC with NixOS installed and BTRFS filesystem.
+* Ethernet Connection
+* Desktop (SteamDeck will not work)
 
 # Features
 * Zero Desktop Bloat. Gamescope is used as window manager.
