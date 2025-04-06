@@ -83,6 +83,8 @@ NixOS uses hashes as paths and are subject to change. /run/current-system contai
 * Game banners will be imported for each sortcut
 * Boot time improvement
 * Add dot files for preconfigured RetroArch and EmulationStation settings
+* Create minimal auto installer ISO
+* Create GH pages site with basic support
 
 
 
