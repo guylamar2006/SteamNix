@@ -101,7 +101,6 @@
      retroarch-full
      libretro-shaders-slang
      legendary-gl
-     quickemu
      
   ];
 
