@@ -82,6 +82,7 @@ NixOS uses hashes as paths and are subject to change. /run/current-system contai
 * VDF python script will be updated into a universal CLI importer for non-steam and DRM free games
 * Game banners will be imported for each sortcut
 * Boot time improvement
+* Add dot files for preconfigured RetroArch and EmulationStation settings
 
 
 
