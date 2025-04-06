@@ -1,5 +1,5 @@
 # ❄️ SteamOS NixOS Edition ❄️
-Nix Flake for creating a SteamOS like experience on NixOS. Clean quiet boot like on SteamDeck. Two second shutdown time.
+Nix Flake for creating a SteamOS like experience on NixOS. Clean quiet boot like on SteamDeck. Two second shutdown time. Meant for those who primarily use SSH, but would like a SteamOS experience for games.
 
 # Requirements
 * PC with NixOS installed and BTRFS filesystem.
