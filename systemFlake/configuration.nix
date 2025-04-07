@@ -102,6 +102,7 @@
      libretro-shaders-slang
      legendary-gl
      steam-run
+     winetricks
      
   ];
 
