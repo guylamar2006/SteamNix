@@ -25,9 +25,9 @@
   #Enable Nested VM
   #boot.extraModprobeConfig = "options kvm_amd nested=1";
   #boot.kernel.sysctl."kernel.split_lock_mitigate"= "0";
-  boot.kernel.sysctl."kernel.sched_bore" = "1";
+  #boot.kernel.sysctl."kernel.sched_bore" = "1";
   #Kernel Modules
-  boot.initrd.kernelModules = ["ntsync"];
+  #boot.initrd.kernelModules = ["ntsync"];
   #Nix Flakes
   #Enable Appimages to Execute with Appimage-run, needs Appimage-run package
   programs.appimage = {
