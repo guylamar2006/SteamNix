@@ -13,7 +13,8 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  #Mitigation Performance
+  #Smash Spacebar to Show NixOS Menu
+  boot.loader.timeout = 0;
   boot.kernelParams = [
       "quiet"
       "splash"
