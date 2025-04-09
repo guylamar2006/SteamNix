@@ -40,7 +40,7 @@
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
   programs.gamescope.capSysNice = true;
-  programs.bash.loginShellInit = "gamescope -W 1920 -H 1080 --steam -- steam -gamepadui -mangoapp -pipewire-dmabuf --adaptive-sync > /dev/null 2>&1";
+  programs.bash.loginShellInit = "STEAM_MULTIPLE_XWAYLANDS=1 gamescope -W 1920 -H 1080 -r 120 -e --xwayland-count 2 --adaptive-sync -- steam -gamepadui -steamdeck > /dev/null 2>&1";
   #CatchyOS Kernel
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
   #Chaotic Nix Pkgs
