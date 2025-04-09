@@ -40,6 +40,7 @@
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
   programs.gamescope.capSysNice = true;
+  #STEAM_MULTIPLE_XWAYLANDS and xwayland-count 2 needed for Diablo IV to work with controller, change resolution according to your GPU
   programs.bash.loginShellInit = "STEAM_MULTIPLE_XWAYLANDS=1 gamescope -W 1920 -H 1080 -e --xwayland-count 2 --hdr-enabled -- steam -gamepadui -steamdeck > /dev/null 2>&1";
   #CatchyOS Kernel
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
