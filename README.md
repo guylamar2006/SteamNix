@@ -9,7 +9,7 @@ Nix Flake for creating a SteamOS like experience on NixOS. Clean quiet boot like
 
 # Features
 * Zero Desktop Bloat. Gamescope is used as window manager.
-* Latest CatchyOS Kernel 
+* Latest CatchyOS Kernel and NTsync
 * FPS improvement comapred to Stock NixOS kernel.
 * Clean, textless boot. Similar to SteamDeck bootup. Minus the Splash logo.
 * Read-only system files and binaries to prevent corruption or malware.
@@ -28,25 +28,37 @@ sudo reboot now
 
 All Further changes to configuration.nix for the system need to be done through this command and configuration file!
 
-# How to use VDF Editor (Add Non-Steam Games)
+# How to use Steam VDF (Add Non-Steam Games)
 ```
-cd VDF-Editor
-python shortcuts.py shortcuts.vdf "Super Video Game IV" "~/mount/ES-DE/EmulationStation.AppImage" ~/mount/ES-DE/ "" "" "" 0 0 1 0 0 FPS Puzzle
-```
-```
-"Super Video Game IV" = Game Title 
-"~/mount/ES-DE/EmulationStation.AppImage" = location of executable or command
+pipx install steam-vdf
+
+usage: steam-vdf [-h] [-d] [-v] [-o {json,text}] {info,list-shortcuts,view,add-shortcut,delete-shortcut,restart-steam} ...
+
+Steam VDF Tool
+
+positional arguments:
+  {info,list-shortcuts,view,add-shortcut,delete-shortcut,restart-steam}
+    info                Display Steam library information
+    list-shortcuts      List existing non-Steam game shortcuts
+    view                View contents of a VDF file
+    add-shortcut        Add a new non-Steam game shortcut
+    delete-shortcut     Delete an existing non-Steam game shortcut
+    restart-steam       Restart Steam
+
+options:
+  -h, --help            show this help message and exit
+  -d, --debug           Enable debug output
+  -v, --dump-vdfs       Enable dumping of VDFs to JSON
+  -o {json,text}, --output {json,text}
+                        Output type format
+
 ```
 
-Find Folder to copy VDF file to:
-```
-find .local/share/Steam/ -name localconfig*
-```
-Copy VDF file to Remote directory :
-```
-scp shortcuts.vdf steamos@192.168.152.163:.local/share/Steam/userdata/115922529/config/
-```
-Restart Steam/PC
+Restart Steam from power menu
+
+# Headless Install of Fitgirl Games via Docker/Podman
+
+Place all of Fitgirl bins and setup.exe in fgextract folder and run ./fgextract.sh
 
 # Installing Epic Games
 SSH into PC and run:
