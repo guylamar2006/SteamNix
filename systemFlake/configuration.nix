@@ -25,10 +25,9 @@
   boot.initrd.verbose = false;
   #Enable Nested VM
   #boot.extraModprobeConfig = "options kvm_amd nested=1";
-  #boot.kernel.sysctl."kernel.split_lock_mitigate"= "0";
   #boot.kernel.sysctl."kernel.sched_bore" = "1";
   #Kernel Modules
-  #boot.initrd.kernelModules = ["ntsync"];
+  boot.initrd.kernelModules = ["ntsync"];
   #Nix Flakes
   #Enable Appimages to Execute with Appimage-run, needs Appimage-run package
   programs.appimage = {
@@ -41,11 +40,16 @@
   programs.steam.gamescopeSession.enable = true;
   programs.gamescope.capSysNice = true;
   #STEAM_MULTIPLE_XWAYLANDS and xwayland-count 2 needed for Diablo IV to work with controller, change resolution according to your GPU
-  programs.bash.loginShellInit = "STEAM_MULTIPLE_XWAYLANDS=1 gamescope -W 1920 -H 1080 -e --xwayland-count 2 --hdr-enabled -- steam -gamepadui > /dev/null 2>&1";
+  programs.bash.loginShellInit = "STEAM_MULTIPLE_XWAYLANDS=1 gamescope -W 1920 -H 1080 -e --xwayland-count 2 --hdr-enabled --fullscreen --hdr-itm-enabled -- steam -gamepadui > /dev/null 2>&1";
   #CatchyOS Kernel
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
-  #Chaotic Nix Pkgs
-  chaotic.mesa-git.enable = true;
+  #Enviroment Variables (Sets Steam launch options globally
+  environment.sessionVariables = rec {
+    PROTON_USE_NTSYNC=1; 
+    ENABLE_HDR_WSI=1; 
+    DXVK_HDR=1;  
+    PROTON_ENABLE_WAYLAND=1;
+  };
   #Sound
   # rtkit is optional but recommended
   security.rtkit.enable = true;
@@ -89,6 +93,19 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  #Enable Docker/Podman
+  virtualisation.containers.enable = true;
+  virtualisation = {
+    podman = {
+      enable = true;
+
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
   
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -104,7 +121,8 @@
      libretro-shaders-slang
      legendary-gl
      steam-run
-     winetricks
+     pipx
+     python3
      
   ];
 
