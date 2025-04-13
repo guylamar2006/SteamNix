@@ -56,7 +56,7 @@ options:
 
 Restart Steam from power menu
 
-# Headless Install of Fitgirl Games via Docker/Podman
+# Headless Install of https://fitgirl-repacks.site via Docker/Podman
 
 Place all of Fitgirl bins and setup.exe in fgextract folder and run ./fgextract.sh
 
