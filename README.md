@@ -61,6 +61,7 @@ Restart Steam from power menu
 * Place all of Fitgirl bins and setup.exe in fgextract folder and run ./fgextract.sh
 * Use btop to check when done, when QuickSFV.exe is run, its safe to exit the container.
 * In the future a kill command will be added to the script.
+* The files are located in the .wine folder in the current directory
 
 # Installing Epic Games
 SSH into PC and run:
