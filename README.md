@@ -10,7 +10,7 @@ Nix Flake for creating a SteamOS like experience on NixOS. Clean quiet boot like
 # Features
 * Zero Desktop Bloat. Gamescope is used as window manager.
 * Latest CatchyOS Kernel and NTsync
-* FPS improvement comapred to Stock NixOS kernel.
+* FPS improvement over stock NixOS kernel.
 * Clean, textless boot. Similar to SteamDeck bootup. Minus the Splash logo.
 * Read-only system files and binaries to prevent corruption or malware.
 * Boot menu with previous system states, incase update breaks system, allowing you to boot to a previous good state.
