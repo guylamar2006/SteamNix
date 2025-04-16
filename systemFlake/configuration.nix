@@ -1,144 +1,126 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  # Hardware scan import
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  #Smash Spacebar to Show NixOS Menu
-  boot.loader.timeout = 0;
-  boot.kernelParams = [
-      "quiet"
-      "splash"
-        ];
-  boot.plymouth.enable = true;
-  boot.initrd.systemd.enable = true;
-  boot.consoleLogLevel = 0;
-  boot.initrd.verbose = false;
-  #Enable Nested VM
-  #boot.extraModprobeConfig = "options kvm_amd nested=1";
-  #boot.kernel.sysctl."kernel.sched_bore" = "1";
-  #Kernel Modules
-  boot.initrd.kernelModules = ["ntsync"];
-  #Nix Flakes
-  #Enable Appimages to Execute with Appimage-run, needs Appimage-run package
-  programs.appimage = {
-    enable = true;
-    binfmt = true;
+  # Bootloader and Kernel
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    loader.timeout = 0;
+    kernelParams = [ "quiet" "splash" ];
+    plymouth.enable = true;
+    initrd = {
+      systemd.enable = true;
+      kernelModules = [ "ntsync" ];
+      verbose = false;
     };
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-  #SteamOS Auto Boot
-  programs.steam.enable = true;
-  programs.steam.gamescopeSession.enable = true;
-  programs.gamescope.capSysNice = true;
-  #STEAM_MULTIPLE_XWAYLANDS and xwayland-count 2 needed for Diablo IV to work with controller, change resolution according to your GPU
-  programs.bash.loginShellInit = "STEAM_MULTIPLE_XWAYLANDS=1 gamescope -W 1920 -H 1080 -e --xwayland-count 2 --hdr-enabled --fullscreen --hdr-itm-enabled -- steam -pipewire-dmabuf -gamepadui > /dev/null 2>&1";
-  #CatchyOS Kernel
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
-  #Enviroment Variables (Sets Steam launch options globally
-  environment.sessionVariables = rec {
-    PROTON_USE_NTSYNC=1; 
-    ENABLE_HDR_WSI=1; 
-    DXVK_HDR=1;  
-    PROTON_ENABLE_WAYLAND=1;
+    consoleLogLevel = 0;
+    kernelPackages = pkgs.linuxPackages_latest;
+    # kernel.sysctl."kernel.sched_bore" = "1";
   };
-  #Sound
-  # rtkit is optional but recommended
+
+  # Filesystem
+  fileSystems."/" = { options = [ "compress=zstd" ]; };
+
+  # Time and Locale
+  time.timeZone = "America/Los_Angeles";
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  # Networking
+  networking = {
+    networkmanager.enable = true;
+    firewall.enable = false;
+  };
+
+  # Sound
   security.rtkit.enable = true;
   services.pipewire = {
-    enable = true; # if not already enabled
+    enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-  };
-  # Enable networking
-  networking.networkmanager.enable = true;
-  #Silent Boot
-  services.getty.helpLine = lib.mkForce "" ;
-  services.getty.greetingLine = "";
-  services.getty.extraArgs = ["--skip-login"];
-
-  # Set your time zone.
-  time.timeZone = "America/Los_Angeles";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  #Enable Filesystem Compression
-  fileSystems = {
-  "/".options = [ "compress=zstd" ];
+    # jack.enable = true;
   };
 
-  security.sudo.wheelNeedsPassword = false;
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.steamos = {
-    isNormalUser = true;
-    description = "as                                                                                                                                                                                   steamos";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+  # Programs and Gaming
+  programs = {
+    appimage = { enable = true; binfmt = true; };
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+    };
+    gamescope.capSysNice = true;
+    mosh.enable = true;
   };
 
-  # Enable automatic login for the user.
-  services.getty.autologinUser = "steamos";
+  environment.sessionVariables = {
+    PROTON_USE_NTSYNC = "1";
+    ENABLE_HDR_WSI = "1";
+    DXVK_HDR = "1";
+    PROTON_ENABLE_WAYLAND = "1";
+  };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-  #Enable Docker/Podman
-  virtualisation.containers.enable = true;
+  programs.bash.loginShellInit =
+    ''
+      STEAM_MULTIPLE_XWAYLANDS=1 gamescope -W 1920 -H 1080 -e --xwayland-count 2 --hdr-enabled --fullscreen --hdr-itm-enabled -- steam -pipewire-dmabuf -gamepadui > /dev/null 2>&1
+    '';
+
+  # Container Support
   virtualisation = {
+    containers.enable = true;
     podman = {
       enable = true;
-
-      # Create a `docker` alias for podman, to use it as a drop-in replacement
       dockerCompat = true;
-
-      # Required for containers under podman-compose to be able to talk to each other.
       defaultNetwork.settings.dns_enabled = true;
     };
   };
-  
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+
+  # Environment
   environment.systemPackages = with pkgs; [
-     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     wget
-     btop
-     curl
-     tmux
-     mangohud
-     appimage-run
-     retroarch-full
-     libretro-shaders-slang
-     legendary-gl
-     steam-run
-     pipx
-     python3
-     
+    vim
+    wget
+    btop
+    curl
+    tmux
+    mangohud
+    appimage-run
+    retroarch-full
+    libretro-shaders-slang
+    legendary-gl
+    quickemu
+    steam-run
+    pipx
+    python3
   ];
 
-  # List services that you want to enable:
+  # User Management
+  users.users.steamos = {
+    isNormalUser = true;
+    description = "as steamos";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [ ];
+  };
+  services.getty = {
+    helpLine = lib.mkForce "";
+    greetingLine = "";
+    extraArgs = [ "--skip-login" ];
+    autologinUser = "steamos";
+  };
 
-  # Enable the OpenSSH daemon.
-   services.openssh.enable = true;
+  # Sudo
+  security.sudo.wheelNeedsPassword = false;
 
-   networking.firewall.enable = false;
+  # SSH
+  services.openssh.enable = true;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
+  # Nix Flakes and Settings
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nixpkgs.config.allowUnfree = true;
 
+  # System state version (do not change without reading documentation)
+  system.stateVersion = "24.11";
 }
