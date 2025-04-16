@@ -17,7 +17,7 @@ Nix Flake for creating a SteamOS like experience on NixOS. Clean quiet boot like
 * Full Control over system via Nix configuration file
 
 
-# How to Build NixOS Base System from Flake
+# How to Build NixOS Base System
 ```
 git clone https://github.com/leonewton253/SteamOS-NixOS-Edition.git
 mv SteamNix/configuration.nix /etc/nixos/
