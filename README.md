@@ -9,7 +9,7 @@ Nix Flake for creating a SteamOS like experience on NixOS. Clean quiet boot like
 
 # Features
 * Zero Desktop Bloat. Gamescope is used as window manager.
-* Latest CatchyOS Kernel and NTsync
+* Latest Kernel and NTsync
 * FPS improvement over stock NixOS kernel.
 * Clean, textless boot. Similar to SteamDeck bootup. Minus the Splash logo.
 * Read-only system files and binaries to prevent corruption or malware.
@@ -20,9 +20,9 @@ Nix Flake for creating a SteamOS like experience on NixOS. Clean quiet boot like
 # How to Build NixOS Base System from Flake
 ```
 git clone https://github.com/leonewton253/SteamOS-NixOS-Edition.git
-cp /etc/nixos/hardware-configuration.nix systemFlake/
+mv SteamNix/configuration.nix /etc/nixos/
 nix-channel --add https://nixos.org/channels/nixos-unstable nixos
-sudo nixos-rebuild boot --upgrade --flake systemFlake/
+sudo nixos-rebuild boot --upgrade 
 sudo reboot now
 ```
 
