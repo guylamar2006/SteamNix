@@ -11,6 +11,7 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     loader.timeout = 0;
+    kernel.sysctl."kernel.split_lock_mitigate"= "0";
     kernelParams = [ "quiet" "splash" ];
     plymouth.enable = true;
     initrd = {
