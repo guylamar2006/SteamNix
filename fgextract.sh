@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Tool to Extract fitgirl bins by running the setup.exe in a docker conatiner. Run this script from the same direcory as the setup.exe.
+#Tool to Extract fitgirl bins by running the setup.exe in a docker conatiner. Run this script from the same direcory as the setup.exe..
 
 
 docker run -it --rm \
