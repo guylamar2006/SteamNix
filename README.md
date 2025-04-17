@@ -3,7 +3,6 @@ Nix Flake for creating a SteamOS like experience on NixOS. Clean quiet boot like
 
 # Requirements
 * PC with NixOS installed and BTRFS filesystem.
-* Ethernet Connection
 * Desktop PC (SteamDeck will not work)
 * Basic knowledge of NixOS (editing time zone, fileystem options, etc. from config file)
 
