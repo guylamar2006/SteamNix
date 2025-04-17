@@ -65,7 +65,7 @@
     DXVK_HDR = "1";
     PROTON_ENABLE_WAYLAND = "1";
   };
-
+  #Sets Gamescope parameters. In the future change -F "nearest" to "fsr" for FSR4 upscaling in all games
   programs.bash.loginShellInit =
     ''
       STEAM_MULTIPLE_XWAYLANDS=1 gamescope -W 1920 -H 1080 -e --xwayland-count 2 --hdr-enabled --fullscreen -F nearest --hdr-itm-enabled -- steam -pipewire-dmabuf -gamepadui > /dev/null 2>&1
