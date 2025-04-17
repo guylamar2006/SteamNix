@@ -72,15 +72,7 @@
     '';
 
   # Container Support
-  virtualisation = {
-    containers.enable = true;
-    podman = {
-      enable = true;
-      dockerCompat = true;
-      defaultNetwork.settings.dns_enabled = true;
-    };
-  };
-
+  virtualisation.docker.enable = true;
   # Environment
   environment.systemPackages = with pkgs; [
     vim
@@ -103,7 +95,7 @@
   users.users.steamos = {
     isNormalUser = true;
     description = "as steamos";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [ ];
   };
   services.getty = {
