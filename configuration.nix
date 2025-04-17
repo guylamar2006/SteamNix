@@ -68,7 +68,7 @@
 
   programs.bash.loginShellInit =
     ''
-      STEAM_MULTIPLE_XWAYLANDS=1 gamescope -W 1920 -H 1080 -e --xwayland-count 2 --hdr-enabled --fullscreen --hdr-itm-enabled -- steam -pipewire-dmabuf -gamepadui > /dev/null 2>&1
+      STEAM_MULTIPLE_XWAYLANDS=1 gamescope -W 1920 -H 1080 -e --xwayland-count 2 --hdr-enabled --fullscreen -F nearest --hdr-itm-enabled -- steam -pipewire-dmabuf -gamepadui > /dev/null 2>&1
     '';
 
   # Container Support
