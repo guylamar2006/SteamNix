@@ -60,6 +60,7 @@
   };
 
   environment.sessionVariables = {
+    STEAM_MULTIPLE_XWAYLANDS = "1";
     PROTON_USE_NTSYNC = "1";
     ENABLE_HDR_WSI = "1";
     DXVK_HDR = "1";
