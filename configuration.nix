@@ -108,7 +108,8 @@
   security.polkit.enable = true;
   services.seatd.enable = true;
   
-  
+  #Auto-Update
+  system.autoUpgrade.enable = true;
 
   # SSH
   services.openssh.enable = true;
