@@ -83,6 +83,7 @@
     mangohud
     appimage-run
     legendary-gl
+    protonup-ng
     pipx
     python3
   ];
