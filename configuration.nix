@@ -68,7 +68,7 @@
   #Sets Gamescope parameters. In the future change -F "nearest" to "fsr" for FSR4 upscaling in all games
   programs.bash.loginShellInit =
     ''
-      gamescope -W 1920 -H 1080 -f -e --xwayland-count 2 --hdr-enabled --fullscreen -F nearest --hdr-itm-enabled -- steam -pipewire-dmabuf -gamepadui -steamos > /dev/null 2>&1
+      gamescope -W 1920 -H 1080 -f -e --xwayland-count 2 --hdr-enabled -F nearest --hdr-itm-enabled -- steam -pipewire-dmabuf -gamepadui -steamos > /dev/null 2>&1
     '';
 
   # Container Support
