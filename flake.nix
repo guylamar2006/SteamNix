@@ -1,9 +1,9 @@
 ##################################################
-Place in empty folder and CD into
-Run "git add flake.nix" 
-Run "nix build .#install-iso"
-
-Copyright © 2025, Leo Newton, All rights reserved.
+#Place in empty folder and CD into
+#Run "git add flake.nix" 
+#Run "nix build .#install-iso"
+#
+#Copyright © 2025, Leo Newton, All rights reserved.
 ##################################################
 
 {
