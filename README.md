@@ -66,8 +66,10 @@ Restart Steam from power menu
 # Installing Epic Games
 SSH into PC and run:
 ```
+pip install legendary-gl
 legendary install gameid
 ```
+* https://github.com/derrod/legendary
 
 # Running Epic Games with Steam's Proton
 * Create script such as godlike.sh
