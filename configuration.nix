@@ -124,6 +124,22 @@ in
     };
   };
 
+  #Update ProtonGE at boot
+  systemd.services.protonup = {
+    description = "Run ProtonUp script at boot";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = ''
+        /run/current-system/sw/bin/curl -sSL https://raw.githubusercontent.com/SteamNix/SteamNix/main/protonup.sh -o /tmp/protonup.sh
+        chmod +x /tmp/protonup.sh
+        /tmp/protonup.sh
+      '';
+    };
+  };
+
+  #Sync with Git Repo
   systemd.services."update-configuration-nix" = {
     script = ''
       set -e
