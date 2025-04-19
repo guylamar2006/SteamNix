@@ -134,7 +134,6 @@ in
       User = "root";
     };
     path = [ pkgs.curl ];
-    # Only run if /etc/nixos/ exists
     wantedBy = [ "multi-user.target" ];
   };
 
