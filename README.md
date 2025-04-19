@@ -106,8 +106,30 @@ NixOS uses hashes as paths and are subject to change. /run/current-system contai
 Username: steamos
 Password: steamos
 ```
-* Use "passwd" to change password, then delete line in nixos config with password. Rebuild with "sudo nixos-rebuild switch".
- 
+
+# Custom Password and other local customization
+```
+Create /etc/nixos/custom.nix with secure permissions:
+
+sudo touch /etc/nixos/custom.nix
+sudo chmod 600 /etc/nixos/custom.nix
+```
+```
+/etc/nixos/custom.nix
+-------------------------
+
+{ config, pkgs, ... }:
+
+{
+  # Set a custom password
+  users.users.steamos = {
+    hashedPassword = "$6$TclE7a.../uEI7b."; # Substitute your hash here!
+    # You can generate a hash with: mkpasswd -m sha-512
+  };
+
+  # Any other overrides or settings...
+}
+```
 
 # TODO
 * [x] Find VDF python library
