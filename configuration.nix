@@ -41,7 +41,7 @@ in
     firewall.enable = false;
     hostName = "nixos"; 
   };
-
+  #test comment for sync
   # Sound
   security.rtkit.enable = true;
   services.pipewire = {
