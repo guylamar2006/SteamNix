@@ -1,3 +1,11 @@
+##################################################
+Place in empty folder and CD into
+Run "git add flake.nix" 
+Run "nix build .#install-iso"
+
+Copyright © 2025, Leo Newton, All rights reserved.
+##################################################
+
 {
   description = "Auto-install minimal NixOS ISO, config from GitHub, BTRFS, largest disk";
 
