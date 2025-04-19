@@ -94,6 +94,7 @@ NixOS uses hashes as paths and are subject to change. /run/current-system contai
 
 # LiveCD AutoInstaller
 * WARNING! Will erase all data on largest drive detected. Place flake.nix in empty folder and CD into folder.
+* To generate ISO:
   
   ```
   git init
