@@ -1,10 +1,14 @@
 { config, pkgs, lib, ... }:
-
+let
+  customFile = "/etc/nixos/custom.nix";
+  customImport = if builtins.pathExists customFile then [ customFile ] else [];
+in
 {
   # Hardware scan import
   imports = [
     ./hardware-configuration.nix
-  ];
+  ]
+  ++ customImport;
 
   # Bootloader and Kernel
   boot = {
