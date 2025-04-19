@@ -13,6 +13,8 @@ Nix Flake for creating a SteamOS like experience on NixOS. Clean quiet boot like
 * Boot menu with previous system states, incase update breaks system, allowing you to boot to a previous good state.
 * Full Control over system via Nix configuration file
 
+# Download ISO
+https://github.com/SteamNix/SteamNix/releases
 
 # How to Build NixOS Base System
 ```
