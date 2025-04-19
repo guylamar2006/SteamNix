@@ -112,6 +112,30 @@
   #Auto-Update
   system.autoUpgrade.enable = true;
 
+  #Sync with SteamNix Repo
+  systemd.timers."update-configuration-nix" = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "daily";
+      Persistent = true;
+    };
+  };
+
+  systemd.services."update-configuration-nix" = {
+    script = ''
+      set -e
+      curl -fsSL https://raw.githubusercontent.com/SteamNix/SteamNix/refs/heads/main/configuration.nix -o /etc/nixos/configuration.nix
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+    };
+    path = [ pkgs.curl ];
+    # Only run if /etc/nixos/ exists
+    startAt = null;
+    wantedBy = [ "multi-user.target" ];
+  };
+
   # SSH
   services.openssh.enable = true;
 
