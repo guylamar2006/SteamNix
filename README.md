@@ -13,6 +13,7 @@ Nix Flake for creating a SteamOS like experience on NixOS. Clean quiet boot like
 * Read-only system files and binaries to prevent corruption or malware.
 * Boot menu with previous system states, incase update breaks system, allowing you to boot to a previous good state.
 * Automated updates and new features pushed via Github
+* Latest ProtonGE automatically installed
 
 # Download ISO
 https://github.com/SteamNix/SteamNix/releases
