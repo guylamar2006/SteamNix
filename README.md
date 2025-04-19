@@ -117,6 +117,8 @@ Password: steamos
 * [x] Create minimal auto installer ISO
 * [ ] Create GH pages site with basic support
 * [ ] Create Fitgirl Store App with one click fitgirl installs
+* [ ] Shortcut toggle to connect bluetooth controllers
+      
 
   
 
