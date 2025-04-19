@@ -1,5 +1,5 @@
 # ❄️ SteamOS NixOS Edition ❄️
-Nix Flake for creating a SteamOS like experience on NixOS. Clean quiet boot like on SteamDeck. Two second shutdown time. Meant for those who primarily use SSH, but would like a SteamOS experience for games. For example, you own a MacBook Pro and don't care to use linux desktop software.
+Nix Flake for creating a SteamOS like experience on NixOS. Clean quiet boot like on SteamDeck. Two second shutdown time. Meant for those who primarily use SSH, but would like a SteamOS experience for games.
 
 # Requirements
 * Desktop or laptop PC, preferably with AMD GPU or iGPU. (For SteamDeck, see https://github.com/Jovian-Experiments/Jovian-NixOS)
