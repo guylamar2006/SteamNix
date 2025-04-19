@@ -115,7 +115,7 @@ Password: steamos
 * [ ] Boot time improvement
 * [ ] Add dot files for preconfigured RetroArch settings
 * [x] Create minimal auto installer ISO
-* [ ] Create GH pages site with basic support
+* [ ] Create GH pages site with Documentation
 * [ ] Create Fitgirl Store App with one click fitgirl installs
 * [ ] Shortcut toggle to connect bluetooth controllers
       
