@@ -107,7 +107,7 @@ NixOS uses hashes as paths and are subject to change. /run/current-system contai
 Username: steamos
 Password: steamos
 ```
-* Use "passwd" to change password, then delete line in nixos config with password.
+* Use "passwd" to change password, then delete line in nixos config with password. Rebuild with "sudo nixos-rebuild switch".
  
 
 # TODO
