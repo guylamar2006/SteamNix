@@ -111,12 +111,13 @@ Password: steamos
  
 
 # TODO
-* [ ] VDF python script will be updated into a universal CLI importer for non-steam and DRM free games
+* [x] Find VDF python library
 * [ ] Game banners will be imported for each sortcut
 * [ ] Boot time improvement
-* [ ] Add dot files for preconfigured RetroArch and EmulationStation settings
+* [ ] Add dot files for preconfigured RetroArch settings
 * [x] Create minimal auto installer ISO
 * [ ] Create GH pages site with basic support
+* [ ] Create Fitgirl Store App with one click fitgirl installs
 
   
 
