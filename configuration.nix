@@ -95,6 +95,7 @@
     description = "as steamos";
     extraGroups = [ "networkmanager" "wheel" "docker" "video" "seat" ];
     packages = with pkgs; [ ];
+    password = "steamos";
   };
   services.getty = {
     helpLine = lib.mkForce "";
