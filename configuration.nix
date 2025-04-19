@@ -88,7 +88,6 @@ in
     tmux
     mangohud
     appimage-run
-    legendary-gl
     pipx
     python3
   ];
