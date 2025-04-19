@@ -101,8 +101,14 @@ NixOS uses hashes as paths and are subject to change. /run/current-system contai
   git add flake.nix 
   nix build .#install-iso
   ```
-  
 
+# Password/Login
+```
+Username: steamos
+Password: steamos
+```
+* Use "passwd" to change password, then delete line in nixos config with password.
+ 
 
 # TODO
 * [ ] VDF python script will be updated into a universal CLI importer for non-steam and DRM free games
