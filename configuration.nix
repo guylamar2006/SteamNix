@@ -83,6 +83,7 @@ in
     vim
     wget
     btop
+    jq
     curl
     tmux
     mangohud
