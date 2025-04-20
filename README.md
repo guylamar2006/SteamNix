@@ -136,13 +136,24 @@ sudo chmod 600 /etc/nixos/custom.nix
 }
 ```
 # Adding another drive
+Find device such as /dev/sda
+```
+[steamos@nixos:~]$ lsblk
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+sda      8:0    0 596.2G  0 disk /run/media/steamos/HDD
+sdb      8:16   0 931.5G  0 disk
+├─sdb1   8:17   0 930.8G  0 part /nix/store
+│                                /
+└─sdb2   8:18   0   750M  0 part /boot
+```
+Add drive to custom.nix and rebuild and reboot.
 ```
 /etc/nixos/custom.nix
 -------------------------
 
 { config, pkgs, lib, ... }:
 {
-fileSystems."/mnt/HDD" = {
+fileSystems."/run/media/steamos/HDD" = {
    device = "/dev/sda";
    fsType = "btrfs";
    options = [
@@ -150,9 +161,7 @@ fileSystems."/mnt/HDD" = {
  };
 }
 ```
-```
-sudo chown steamos /mnt/HDD/
-```
+Comment out Gnome desktop lines in configuration.nix and reboot into desktop and add folder via Desktop steam in storage menu.
 
 # TODO
 * [x] Find VDF python library
