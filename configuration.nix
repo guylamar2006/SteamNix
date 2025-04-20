@@ -127,8 +127,9 @@ in
   #Update ProtonGE at boot
   systemd.services.protonup = {
     description = "Run ProtonUp script at boot";
-    after = [ "network.target" ];
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = [ "getty@tty1.service" ]; 
+    after = [ "network-online.target" "getty@tty1.service" ];
+    requires = [ "network-online.target" ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = ''
@@ -150,7 +151,9 @@ in
       User = "root";
     };
     path = [ pkgs.curl ];
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = [ "getty@tty1.service" ]; 
+    after = [ "network-online.target" "getty@tty1.service" ];
+    requires = [ "network-online.target" ]; 
   };
 
   # SSH
