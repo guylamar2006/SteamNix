@@ -71,11 +71,15 @@ in
     DXVK_HDR = "1";
     PROTON_ENABLE_WAYLAND = "1";
   };
+  #Enables GNOME Desktop. Comment out gamescope line below first.
+  #services.xserver = {
+  #enable = true;
+  #displayManager.gdm.enable = true;
+  #desktopManager.gnome.enable = true;
+  #};
+
   #Sets Gamescope parameters. In the future change -F "nearest" to "fsr" for FSR4 upscaling in all games
-  programs.bash.loginShellInit =
-    ''
-      gamescope -W 1920 -H 1080 -f -e --xwayland-count 2 --hdr-enabled  --hdr-itm-enabled -- steam -pipewire-dmabuf -gamepadui -steamos > /dev/null 2>&1
-    '';
+  programs.bash.loginShellInit = ''gamescope -W 1920 -H 1080 -f -e --xwayland-count 2 --hdr-enabled  --hdr-itm-enabled -- steam -pipewire-dmabuf -gamepadui -steamos > /dev/null 2>&1'';
 
   # Container Support
   virtualisation.docker.enable = true;
