@@ -139,7 +139,7 @@ sudo chmod 600 /etc/nixos/custom.nix
 # TODO
 * [x] Find VDF python library
 * [ ] Game banners will be imported for each sortcut
-* [ ] Boot time improvement
+* [x] Boot time improvement
 * [ ] Add dot files for preconfigured RetroArch settings
 * [x] Create minimal auto installer ISO
 * [ ] Create GH pages site with Documentation
