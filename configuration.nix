@@ -14,9 +14,10 @@ in
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
+    kernelParams = [ "quiet" "splash" "console=tty1" "tpm=false" "tpm_tis.force=0" "8250.nr_uarts=0" ];
     loader.timeout = 0;
     kernel.sysctl."kernel.split_lock_mitigate"= "0";
-    kernelParams = [ "quiet" "splash" ];
+    
     plymouth.enable = true;
     initrd = {
       systemd.enable = true;
@@ -78,6 +79,7 @@ in
 
   # Container Support
   virtualisation.docker.enable = true;
+  virtualisation.docker.enableOnBoot = false;
   # Environment
   environment.systemPackages = with pkgs; [
     vim
