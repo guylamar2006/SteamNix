@@ -146,6 +146,13 @@ sdb      8:16   0 931.5G  0 disk
 │                                /
 └─sdb2   8:18   0   750M  0 part /boot
 ```
+```
+[steamos@nixos:~]$ ls -l /dev/disk/by-uuid/
+total 0
+lrwxrwxrwx 1 root root 10 Apr 20 03:02 08D6-57BE -> ../../sda2
+lrwxrwxrwx 1 root root 10 Apr 20 03:02 bf255b33-3103-444a-8c0f-57b5a6759ef0 -> ../../sda1
+lrwxrwxrwx 1 root root  9 Apr 20 03:02 c8c86bd3-eb06-4010-8309-5724bd18e381 -> ../../sdb
+```
 Add drive to custom.nix and rebuild and reboot.
 ```
 /etc/nixos/custom.nix
@@ -154,11 +161,11 @@ Add drive to custom.nix and rebuild and reboot.
 { config, pkgs, lib, ... }:
 {
 fileSystems."/run/media/steamos/HDD" = {
-   device = "/dev/sda";
+   device = "/dev/disk/by-uuid/c8c86bd3-eb06-4010-8309-5724bd18e381";
    fsType = "btrfs";
    options = [
      "users"  "nofail" "compress=zstd" "nosuid" "nodev" ];
- };
+ }
 }
 ```
 Comment out Gnome desktop lines in configuration.nix and reboot into desktop and add folder via Desktop steam in storage menu.
