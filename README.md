@@ -135,6 +135,24 @@ sudo chmod 600 /etc/nixos/custom.nix
   # Any other overrides or settings...
 }
 ```
+# Adding another drive
+```
+/etc/nixos/custom.nix
+-------------------------
+
+{ config, pkgs, lib, ... }:
+{
+fileSystems."/mnt/HDD" = {
+   device = "/dev/sda";
+   fsType = "btrfs";
+   options = [
+     "users"  "nofail" "compress=zstd" "nosuid" "nodev" ];
+ };
+}
+```
+```
+sudo chown steamos /mnt/HDD/
+```
 
 # TODO
 * [x] Find VDF python library
