@@ -79,8 +79,16 @@ in
   #};
 
   #Sets Gamescope parameters. In the future change -F "nearest" to "fsr" for FSR4 upscaling in all games
-  programs.bash.loginShellInit = ''gamescope -W 1920 -H 1080 -f -e --xwayland-count 2 --hdr-enabled  --hdr-itm-enabled -- steam -pipewire-dmabuf -gamepadui -steamos > /dev/null 2>&1'';
-
+  #programs.bash.loginShellInit = ''gamescope -W 1920 -H 1080 -f -e --xwayland-count 2 --hdr-enabled  --hdr-itm-enabled -- steam -pipewire-dmabuf -gamepadui -steamos > /dev/null 2>&1'';
+  
+  #Gamescope Auto Boot
+  services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.enable = true;
+  services.xserver.displayManager.autoLogin.enable = true;
+  services.xserver.displayManager.autoLogin.user = "steamos";
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
+  
   # Container Support
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = false;
