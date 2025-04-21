@@ -96,7 +96,16 @@ in
     appimage-run
     pipx
     python3
+    bluez
   ];
+  #Bluetooth
+  hardware.bluetooth.enable = true;
+    hardware.bluetooth.settings = {
+      General = {
+        MultiProfile = "multiple";
+        FastConnectable = true;
+      };
+   };
 
   # User Management
   users.users.steamos = {
