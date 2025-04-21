@@ -78,8 +78,8 @@ in
   #desktopManager.gnome.enable = true;
   #};
 
-  #Sets Gamescope parameters. In the future change -F "nearest" to "fsr" for FSR4 upscaling in all games
-  #programs.bash.loginShellInit = ''gamescope -W 1920 -H 1080 -f -e --xwayland-count 2 --hdr-enabled  --hdr-itm-enabled -- steam -pipewire-dmabuf -gamepadui -steamos > /dev/null 2>&1'';
+  #Sets Gamescope parameters. 1080P HDR.
+  programs.steam.gamescopeSession.args = ["-W 1920" "-H 1080" "--xwayland-count 2" "-e" "--hdr-enabled" "--hdr-itm-enabled" ];
   
   #Gamescope Auto Boot
   services.xserver.displayManager.lightdm.enable = true;
