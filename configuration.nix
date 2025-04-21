@@ -123,13 +123,7 @@ in
     packages = with pkgs; [ ];
     password = "steamos";
   };
-  services.getty = {
-    helpLine = lib.mkForce "";
-    greetingLine = "";
-    extraArgs = [ "--skip-login" ];
-    autologinUser = "steamos";
-  };
-
+  
   # Security
   security.sudo.wheelNeedsPassword = false;
   security.polkit.enable = true;
