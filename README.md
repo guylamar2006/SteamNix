@@ -67,7 +67,7 @@ Restart Steam from power menu
 # Installing Epic Games
 SSH into PC and run:
 ```
-pip install legendary-gl
+pipx install legendary-gl
 legendary install gameid
 ```
 * https://github.com/derrod/legendary
