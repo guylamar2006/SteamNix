@@ -107,7 +107,6 @@ in
     appimage-run
     pipx
     python3
-    bluez
   ];
   #Bluetooth
   hardware.bluetooth.enable = true;
