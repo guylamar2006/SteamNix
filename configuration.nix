@@ -78,14 +78,17 @@ in
   #desktopManager.gnome.enable = true;
   #};
 
-  #Sets Gamescope parameters. 1080P HDR.
-  programs.steam.gamescopeSession.args = ["-W 1920" "-H 1080" "--xwayland-count 2" "-e" "--hdr-enabled" "--hdr-itm-enabled" ];
-  
+  #Add this line to /etc/nixos/custom.nix to set Gamescope parameters: 1080P HDR.
+  #programs.steam.gamescopeSession.args = ["-W 1920" "-H 1080" "--xwayland-count 2" "-e" "--hdr-enabled" "--hdr-itm-enabled" ];
+
+  #Gamescope Parameters
+  programs.steam.gamescopeSession.args = ["--xwayland-count 2" "-e"];
+
   #Gamescope Auto Boot
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.enable = true;
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "steamos";
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "steamos";
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
   
