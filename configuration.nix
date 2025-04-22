@@ -134,17 +134,6 @@ in
   #Auto-Update
   system.autoUpgrade.enable = true;
   
-  #Hide Systemd Messages on shutdown via TTY redirection
-  systemd.services."hide-console-on-shutdown" = {
-  description = "Switch to empty tty at shutdown";
-  before = [ "shutdown.target" ];
-  serviceConfig = {
-    Type = "oneshot";
-    ExecStart = "/run/current-system/sw/bin/chvt 63";  # TTY 63 rarely used
-  };
-  wantedBy = [ "shutdown.target" ];
-  };
-
   #Sync with SteamNix Repo
   systemd.timers."update-configuration-nix" = {
     wantedBy = [ "timers.target" ];
