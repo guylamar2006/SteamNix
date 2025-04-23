@@ -136,6 +136,7 @@ in
   
   #Sync with SteamNix Repo
   systemd.timers."update-configuration-nix" = {
+    enable = true;
     wantedBy = [ "timers.target" ];
     timerConfig = {
       OnCalendar = "daily";
@@ -145,6 +146,7 @@ in
 
   #Update ProtonGE at boot
   systemd.services.protonup = {
+    enable = true;
     description = "Run ProtonUp script at boot";
     wantedBy = [ "network-online.target" ]; 
     after = [ "network-online.target"];
@@ -161,6 +163,7 @@ in
 
   #Sync with Git Repo
   systemd.services."update-configuration-nix" = {
+    enable = true;
     script = ''
       set -e
       curl -fsSL https://raw.githubusercontent.com/SteamNix/SteamNix/refs/heads/main/configuration.nix -o /etc/nixos/configuration.nix
