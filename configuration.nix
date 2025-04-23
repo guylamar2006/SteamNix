@@ -58,6 +58,9 @@ in
     appimage = { enable = true; binfmt = true; };
     steam = {
       enable = true;
+      extraPackages = with pkgs; [
+      wineWowPackages.stagingFull
+    ];
       gamescopeSession.enable = true;
     };
     gamescope.capSysNice = true;
