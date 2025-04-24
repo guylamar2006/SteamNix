@@ -144,7 +144,7 @@ in
   users.users.steamos = {
     isNormalUser = true;
     description = "as steamos";
-    extraGroups = [ "networkmanager" "wheel" "docker" "video" "seat" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "video" "seat" "audio" ];
     packages = with pkgs; [ ];
     password = "steamos";
   };
