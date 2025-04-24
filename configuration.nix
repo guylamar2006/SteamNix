@@ -2,8 +2,12 @@
 let
   customFile = "/etc/nixos/custom.nix";
   customImport = if builtins.pathExists customFile then [ customFile ] else [];
+  #For CachyOS Kernel
+  chaotic = builtins.getFlake "github:chaotic-cx/nyx/nyxpkgs-unstable"; 
+  nyxOverlay = chaotic.overlays.default; 
 in
 {
+  nixpkgs.overlays = [ nyxOverlay ]; 
   # Hardware scan import
   imports = [
     ./hardware-configuration.nix
@@ -45,7 +49,7 @@ in
       verbose = false;
     };
     consoleLogLevel = 0;
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_cachyos;
     # kernel.sysctl."kernel.sched_bore" = "1";
   };
 
