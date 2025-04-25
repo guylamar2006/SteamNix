@@ -22,6 +22,7 @@ in
     loader.timeout = 0;
     kernel.sysctl = {
         "kernel.split_lock_mitigate" = 0;
+        "kernel.nmi_watchdog = 0";
       };
     plymouth.enable = true;
     initrd = {
