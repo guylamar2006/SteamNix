@@ -7,8 +7,8 @@ INSTALL_DIR="$HOME/.steam/root/compatibilitytools.d"
 
 mkdir -p "$INSTALL_DIR"
 
-# Get the URLs and names of the lastest .tar.gz asset
-releases=$(curl -s "$API" | jq -r '[.[] | {name: .tag_name, asset: (.assets[] | select(.name | endswith(".tar.gz")) | .browser_download_url)}] | .[:1]')
+# Get the URLs and names of the last 2 .tar.gz assets
+releases=$(curl -s "$API" | jq -r '[.[] | {name: .tag_name, asset: (.assets[] | select(.name | endswith(".tar.gz")) | .browser_download_url)}] | .[:2]')
 urls=($(echo "$releases" | jq -r '.[].asset'))
 names=($(echo "$releases" | jq -r '.[].name'))
 
@@ -30,10 +30,10 @@ for i in "${!urls[@]}"; do
     fi
 done
 
-# Remove old versions, keeping only the latest 5
+# Remove old versions, keeping only the latest 2
 cd "$INSTALL_DIR"
 all_dirs=($(ls -d Proton-* GE-Proton* 2>/dev/null | sort -Vr))
-old_dirs=("${all_dirs[@]:5}")
+old_dirs=("${all_dirs[@]:2}")
 
 for dir in "${old_dirs[@]}"; do
     echo "Removing old version: $dir"
