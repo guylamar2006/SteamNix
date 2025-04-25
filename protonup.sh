@@ -7,8 +7,8 @@ INSTALL_DIR="$HOME/.steam/root/compatibilitytools.d"
 
 mkdir -p "$INSTALL_DIR"
 
-# Get the URLs and names of the last 5 .tar.gz assets
-releases=$(curl -s "$API" | jq -r '[.[] | {name: .tag_name, asset: (.assets[] | select(.name | endswith(".tar.gz")) | .browser_download_url)}] | .[:5]')
+# Get the URLs and names of the lastest .tar.gz asset
+releases=$(curl -s "$API" | jq -r '[.[] | {name: .tag_name, asset: (.assets[] | select(.name | endswith(".tar.gz")) | .browser_download_url)}] | .[:1]')
 urls=($(echo "$releases" | jq -r '.[].asset'))
 names=($(echo "$releases" | jq -r '.[].name'))
 
