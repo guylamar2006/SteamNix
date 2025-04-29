@@ -87,6 +87,8 @@ in
   #displayManager.gdm.enable = true;
   #desktopManager.gnome.enable = true;
   #};
+  #services.flatpak.enable = true;
+  #xdg.portal.enable = true;
 
   #Add this to /etc/nixos/custom.nix to change gamescope aurguments
   #programs.steam.gamescopeSession.args = ["-W 1920" "-H 1080" "--xwayland-count 2" "-e" "--hdr-enabled" "--hdr-itm-enabled" ];
