@@ -20,6 +20,7 @@ in
     loader.efi.canTouchEfiVariables = true;
     kernelParams = [ "quiet" "splash" "console=/dev/null" "tpm=false" "tpm_tis.force=0" "8250.nr_uarts=0" ];
     loader.timeout = 0;
+    loader.limine.maxGenerations = 3;
     kernel.sysctl = {
         "kernel.split_lock_mitigate" = 0;
         "kernel.nmi_watchdog" = 0;
