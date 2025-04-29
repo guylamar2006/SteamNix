@@ -88,6 +88,9 @@ in
   #desktopManager.gnome.enable = true;
   #};
 
+  #Add this to /etc/nixos/custom.nix to change gamescope aurguments
+  #programs.steam.gamescopeSession.args = ["-W 1920" "-H 1080" "--xwayland-count 2" "-e" "--hdr-enabled" "--hdr-itm-enabled" ];
+  
   #Gamescope Auto Boot
   services.xserver.enable = false;
   services.getty.autologinUser = "steamos";
@@ -96,7 +99,7 @@ in
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.gamescope}/bin/gamescope -f -e --xwayland-count 2 --hdr-enabled  --hdr-itm-enabled -- steam -pipewire-dmabuf -gamepadui -steamos > /dev/null 2>&1";
+        command = "steam-gamescope > /dev/null 2>&1";
         user = "steamos";
       };
     };
