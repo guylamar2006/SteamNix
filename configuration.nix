@@ -18,7 +18,7 @@ in
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    kernelParams = [ "quiet" "splash" "console=/dev/null" "tpm=false" "tpm_tis.force=0" "8250.nr_uarts=0" ];
+    kernelParams = [ "quiet" "splash" "console=/dev/null" "tpm=false" "tpm_tis.force=0" ];
     loader.timeout = 0;
     loader.limine.maxGenerations = 3;
     kernel.sysctl = {
@@ -28,7 +28,7 @@ in
     plymouth.enable = true;
     initrd = {
       systemd.enable = true;
-      kernelModules = [ "ntsync" ];
+      kernelModules = [  ];
       verbose = false;
     };
     consoleLogLevel = 0;
@@ -88,20 +88,20 @@ in
   #desktopManager.gnome.enable = true;
   #};
 
-  #Add this line to /etc/nixos/custom.nix to set Gamescope parameters: 1080P HDR.
-  #programs.steam.gamescopeSession.args = ["-W 1920" "-H 1080" "--xwayland-count 2" "-e" "--hdr-enabled" "--hdr-itm-enabled" ];
-
-  #Gamescope Parameters
-  programs.steam.gamescopeSession.args = ["--xwayland-count 2" "-e"];
-
   #Gamescope Auto Boot
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.enable = true;
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "steamos";
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
-  
+  services.xserver.enable = false;
+  services.getty.autologinUser = "steamos";
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.gamescope}/bin/gamescope -W 1920 -H 1080 -f -e --xwayland-count 2 --hdr-enabled  --hdr-itm-enabled -- steam -pipewire-dmabuf -gamepadui -steamos > /dev/null 2>&1";
+        user = "steamos";
+      };
+    };
+  };
+
   # Container Support
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = false;
