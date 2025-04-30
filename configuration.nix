@@ -33,7 +33,7 @@ in
     };
     consoleLogLevel = 0;
     kernelPackages = pkgs.linuxPackages_cachyos;
-    # kernel.sysctl."kernel.sched_bore" = "1";
+    kernel.sysctl."kernel.sched_bore" = "1";
   };
 
   # Filesystem
