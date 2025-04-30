@@ -75,7 +75,11 @@ in
     gamescope.capSysNice = true;
     mosh.enable = true;
   };
-  
+  environment.sessionVariables = {
+    PROTON_USE_NTSYNC = "1";
+    ENABLE_HDR_WSI = "1";
+    DXVK_HDR = "1";
+  };
   #Enables COSMIC Desktop with flatpak. Comment out gamescope/greetd lines below first.
   #services.desktopManager.cosmic.enable = true;
   #services.displayManager.cosmic-greeter.enable = true;
