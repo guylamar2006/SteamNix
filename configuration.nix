@@ -80,12 +80,10 @@ in
     DXVK_HDR = "1";
     PROTON_ENABLE_WAYLAND = "1";
   };
-  #Enables GNOME Desktop. Comment out gamescope line below first.
-  #services.xserver = {
-  #enable = true;
-  #displayManager.gdm.enable = true;
-  #desktopManager.gnome.enable = true;
-  #};
+  
+  #Enables COSMIC Desktop with flatpak. Comment out gamescope/greetd lines below first.
+  #services.desktopManager.cosmic.enable = true;
+  #services.displayManager.cosmic-greeter.enable = true
   #services.flatpak.enable = true;
   #xdg.portal.enable = true;
 
