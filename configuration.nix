@@ -91,7 +91,7 @@ in
   #xdg.portal.enable = true;
 
   #Add this to /etc/nixos/custom.nix to change gamescope aurguments
-  #programs.steam.gamescopeSession.args = ["-W 1920" "-H 1080" "--xwayland-count 2" "-e" "--hdr-enabled" "--mangoapp" ];
+  #programs.steam.gamescopeSession.args = ["-w 1920" "-h 1080" "-r 120" "--xwayland-count 2" "-e" "--hdr-enabled" "--mangoapp" ];
   
   #Gamescope Auto Boot
   services.xserver.enable = false;
