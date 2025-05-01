@@ -18,7 +18,7 @@ in
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    kernelParams = [ "quiet" "console=/dev/null" "tpm_tis.force=0" ];
+    kernelParams = [ "quiet" "console=/dev/null" ];
     loader.timeout = 0;
     loader.limine.maxGenerations = 3;
     kernel.sysctl = {
