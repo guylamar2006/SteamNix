@@ -28,7 +28,6 @@ in
     plymouth.enable = true;
     initrd = {
       systemd.enable = true;
-      systemd.extraConfig = ''DefaultTimeoutStopSec=5s'';
       kernelModules = [  ];
       verbose = false;
     };
@@ -36,13 +35,11 @@ in
     kernelPackages = pkgs.linuxPackages_cachyos;
     kernel.sysctl."kernel.sched_bore" = "1";
   };
+   #For Faster Reboot in desktop
+   systemd.extraConfig = ''DefaultTimeoutStopSec=5s'';
 
   # Filesystem
   fileSystems."/" = { options = [ "compress=zstd" ]; };
-
-  # Time and Locale
-  time.timeZone = "America/Los_Angeles";
-  i18n.defaultLocale = "en_US.UTF-8";
 
   # Networking
   networking = {
@@ -50,7 +47,7 @@ in
     firewall.enable = false;
     hostName = "nixos"; 
   };
-  #test comment for sync
+ 
   # Sound
   security.rtkit.enable = true;
   services.pipewire = {
