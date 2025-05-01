@@ -114,6 +114,8 @@ in
   # Container Support
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = false;
+  #Fish Terminal
+  programs.fish.enable = true;
   # Environment
   environment.systemPackages = with pkgs; [
     vim
