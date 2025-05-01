@@ -65,6 +65,7 @@ in
     appimage = { enable = true; binfmt = true; };
     steam = {
       enable = true;
+      extraCompatPackages = with pkgs; [proton-ge-bin];
       extraPackages = with pkgs; [
       wineWowPackages.stagingFull
       mangohud
@@ -151,23 +152,6 @@ in
     timerConfig = {
       OnCalendar = "daily";
       Persistent = true;
-    };
-  };
-
-  #Update ProtonGE at boot
-  systemd.services.protonup = {
-    enable = true;
-    description = "Run ProtonUp script at boot";
-    wantedBy = [ "network-online.target" ]; 
-    after = [ "network-online.target"];
-    requires = [ "network-online.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = ''
-        /run/current-system/sw/bin/curl -sSL https://raw.githubusercontent.com/SteamNix/SteamNix/main/protonup.sh -o /tmp/protonup.sh
-        chmod +x /tmp/protonup.sh
-        /tmp/protonup.sh
-      '';
     };
   };
 
