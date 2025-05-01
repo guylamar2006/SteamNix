@@ -28,6 +28,7 @@ in
     plymouth.enable = true;
     initrd = {
       systemd.enable = true;
+      systemd.extraConfig = ''DefaultTimeoutStopSec=5s'';
       kernelModules = [  ];
       verbose = false;
     };
