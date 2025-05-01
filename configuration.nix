@@ -73,6 +73,7 @@ in
     };
     gamescope.capSysNice = true;
     mosh.enable = true;
+    tmux.enable = true;
   };
   environment.sessionVariables = {
     PROTON_USE_NTSYNC = "1";
@@ -111,20 +112,10 @@ in
   # Container Support
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = false;
-  #Fish Terminal
+  
+#Fish Terminal
   programs.fish.enable = true;
-  # Environment
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    btop
-    jq
-    curl
-    tmux
-    appimage-run
-    pipx
-    python3
-  ];
+  
   #Bluetooth
   hardware.bluetooth.enable = true;
     hardware.bluetooth.settings = {
