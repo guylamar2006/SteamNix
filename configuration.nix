@@ -83,8 +83,6 @@ in
     PROTON_ENABLE_NVAPI = "1";
     ENABLE_GAMESCOPE_WSI= "1";
     STEAM_MULTIPLE_XWAYLANDS = "1";
-    SDL_VIDEODRIVER = "wayland";
-    
   };
   #Enables COSMIC Desktop with flatpak. Comment out gamescope/greetd lines below first.
   #services.desktopManager.cosmic.enable = true;
