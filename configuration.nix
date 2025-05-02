@@ -160,6 +160,11 @@ in {
   # Auto-Update & Timers
   ######################
   system.autoUpgrade.enable = true;
+  # Force the ExecStart to use "boot --upgrade" instead of "switch"
+  systemd.services."nixos-upgrade".serviceConfig = lib.mkForce {
+    # Keep any other default settings, but replace ExecStart:
+    ExecStart = "${pkgs.nixos-rebuild}/bin/nixos-rebuild boot --upgrade";
+  };
 
   systemd.timers."update-configuration-nix" = {
     enable     = true;
