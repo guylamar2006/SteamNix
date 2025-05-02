@@ -97,15 +97,11 @@ in
   services.xserver.enable = false;
   services.getty.autologinUser = "steamos";
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "steam-gamescope > /dev/null 2>&1";
-        user = "steamos";
-      };
-    };
-  };
+  services.greetd.enable = true;
+
+  services.greetd.settings.default_session = {
+  command = "steam-gamescope > /dev/null 2>&1";
+  user    = "steamos"; };
 
   # Container Support
   virtualisation.docker.enable = true;
