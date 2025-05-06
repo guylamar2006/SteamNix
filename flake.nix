@@ -28,6 +28,13 @@
           echo "Selected disk: $disk"
           lsblk "$disk"
 
+          # Determine partition suffix based on device type
+          if [[ $disk == *"nvme"* ]]; then
+            p="p"
+          else
+            p=""
+          fi
+
           # Zap disk
           sgdisk --zap-all "$disk"
           wipefs -a "$disk"
@@ -38,13 +45,13 @@
           parted -s "$disk" set 1 esp on
           parted -s "$disk" mkpart primary btrfs 513MiB 100%
 
-          mkfs.fat -F32 "$disk"1
-          mkfs.btrfs -f "$disk"2
+          mkfs.fat -F32 "$disk$p"1
+          mkfs.btrfs -f "$disk$p"2
 
           # Mount
-          mount "$disk"2 /mnt
+          mount "$disk$p"2 /mnt
           mkdir -p /mnt/boot
-          mount "$disk"1 /mnt/boot
+          mount "$disk$p"1 /mnt/boot
 
           # Fetch configuration.nix to /mnt/etc/nixos
           mkdir -p /mnt/etc/nixos
