@@ -28,6 +28,15 @@
           echo "Selected disk: $disk"
           lsblk "$disk"
 
+          # Determine partition suffix
+           if [[ $disk =~ [0-9]$ ]]; then
+             part1="${disk}p1"
+             part2="${disk}p2"
+           else
+             part1="${disk}1"
+             part2="${disk}2"
+           fi
+
           # Zap disk
           sgdisk --zap-all "$disk"
           wipefs -a "$disk"
@@ -38,13 +47,13 @@
           parted -s "$disk" set 1 esp on
           parted -s "$disk" mkpart primary btrfs 513MiB 100%
 
-          mkfs.fat -F32 "$disk"1
-          mkfs.btrfs -f "$disk"2
+          mkfs.fat -F32 "$part1"
+          mkfs.btrfs -f "$part2"
 
           # Mount
-          mount "$disk"2 /mnt
+          mount "$part2" /mnt
           mkdir -p /mnt/boot
-          mount "$disk"1 /mnt/boot
+          mount "$part1" /mnt/boot
 
           # Fetch configuration.nix to /mnt/etc/nixos
           mkdir -p /mnt/etc/nixos
