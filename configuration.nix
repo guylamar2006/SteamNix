@@ -23,7 +23,7 @@ in {
   boot.loader.systemd-boot.enable      = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.timeout                  = 0;
-  boot.loader.limine.maxGenerations    = 3;
+  boot.loader.limine.maxGenerations    = 5;
 
   boot.kernelParams = [ "quiet" "console=/dev/null" ];
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
